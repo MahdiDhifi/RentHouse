@@ -1,0 +1,77 @@
+<?php
+
+namespace House\HouseBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+
+class DefaultController extends Controller {
+
+    public function indexAction(Request $request) {
+
+        $em = $this->getDoctrine()->getManager();
+        $houses = $em->getRepository('HouseHouseBundle:House')->findAll();
+        return $this->render('HouseHouseBundle:Default:index.html.twig', array('houses' => $houses));
+    }
+
+    public function filterAction(Request $request) {
+        $rentBuy = $_POST['rentbuy'];
+        $type = $_POST['types'];
+        $price = $_POST['price'];
+        $furnishing = $_POST['furnishing'];
+        $balcony = $_POST['balcony'];
+        $city = $_POST['city'];
+        $floor = $_POST['floor'];
+        $bedroom = $_POST['bedroom'];
+        $bathroom = $_POST['bathroom'];
+        $area = $_POST['area'];
+        $rentFilter = "";
+        if ($rentBuy != "any") {
+            $rentFilter = " AND h.rentbuy='" . $rentBuy . "'";
+        }
+        $typeFilter = "";
+        if ($type != "any") {
+            $typeFilter = " AND h.type='" . $type . "'";
+        }
+        $priceFilter = "";
+        if ($price != "any") {
+            $priceFilter = " AND h.price=" . $price . "";
+        }
+        $furnishingFilter = "";
+        if ($furnishing != "any") {
+            $furnishingFilter = " AND h.type='" . $furnishing . "'";
+        }
+        $balconyFilter = "";
+        if ($balcony != "any") {
+            $balconyFilter = " AND h.balcony='" . $balcony . "'";
+        }
+        $cityFilter = "";
+        if ($city != "any") {
+            $cityFilter = " AND h.city='" . $city . "'";
+        }
+        $floorFilter = "";
+        if ($floor != "any") {
+            $floorFilter = " AND h.floor='" . $floor . "'";
+        }
+        $bedroomFilter = "";
+        if ($bedroom != "any") {
+            $bedroomFilter = " AND h.nbbedroom='" . $bedroom . "'";
+        }
+        $bathroomFilter = "";
+        if ($bathroom != "any") {
+            $bathroomFilter = " AND h.nbbathroom='" . $bathroom . "'";
+        }
+        $areaFilter = "";
+        if ($area != "any") {
+            $areaFilter = " AND h.sf=" . $area . "";
+        }
+        $em = $this->getDoctrine()->getManager();
+        $dql = "SELECT h  FROM HouseHouseBundle:House h WHERE 1=1 " . $areaFilter . $bathroomFilter . $bedroomFilter . $floorFilter . $cityFilter . $cityFilter . $balconyFilter . $furnishingFilter . $priceFilter . $typeFilter . $rentFilter . " ORDER BY h.id DESC ";
+
+        $query = $em->createQuery($dql);
+        $houses = $query->getResult();
+        return $this->render('HouseHouseBundle:Default:index.html.twig', array('houses' => $houses,
+        ));
+    }
+
+}
