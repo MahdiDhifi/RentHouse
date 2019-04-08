@@ -1,0 +1,7 @@
+home:
+    path:     /
+    defaults: { _controller: HouseHouseBundle:Default:index }
+
+houses:
+    path:     /houses
+    defaults: { _controller: HouseHouseBundle:Default:filter }
