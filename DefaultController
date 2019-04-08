@@ -13,6 +13,7 @@ class DefaultController extends Controller {
         $houses = $em->getRepository('HouseHouseBundle:House')->findAll();
         return $this->render('HouseHouseBundle:Default:index.html.twig', array('houses' => $houses));
     }
+// function to search house  using the filter 
 
     public function filterAction(Request $request) {
         $rentBuy = $_POST['rentbuy'];
