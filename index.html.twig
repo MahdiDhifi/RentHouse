@@ -1,0 +1,208 @@
+{% extends "HouseHouseBundle::layout.html.twig" %}
+
+{% block search %}
+    <div class="row">
+        <form class="form-search col-md-12" style="margin-top: -100px;" method="POST" action="{{ path('houses')}}" method="post" enctype="multipart/form-data">
+            <div class="row  align-items-end">
+                <div class="col-md-3">
+
+                    <div class="select-wrap">
+                        <span class="icon icon-arrow_drop_down"></span>
+                        <label for="list-types">Rent/Buy</label>
+                        <select  class="form-control d-block rounded-0" name="rentbuy">
+                            <option value="Rent" selected>Rent</option>
+                            <option value="Buy">Buy</option>
+
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="list-types">Type</label>
+                    <div class="select-wrap">
+                        <span class="icon icon-arrow_drop_down"></span>
+                        <select name="types" id="list-types" class="form-control d-block rounded-0">
+                            <option value="any" selected>Any</option>
+                            <option value="Condo">Condominium</option>
+                            <option value="Residence">Residence</option>
+                            <option value="Commercial">Commercial Building</option>
+                            <option value="Land">Land Property</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="list-types">Prices</label>
+                    <div class="select-wrap">
+                        <span class="icon icon-arrow_drop_down"></span>
+                        <select name="price" id="list-types" class="form-control d-block rounded-0">
+                            <option value="any" selected >Any</option> 
+                            <option value="1500" >0RM-1500RM</option>  
+                            <option value="2500">1500RM-2500RM</option>
+                            <option value="3500">2500RM-3500RM</option>
+                            <option value="5000">2500RM-5000RM</option>
+                            <option value="10000">"5000RM-10000RM</option>
+
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="list-types">Furnishing</label>
+                    <div class="select-wrap">
+                        <span class="icon icon-arrow_drop_down"></span>
+                        <select name="furnishing" id="list-types" class="form-control d-block rounded-0">
+                            <option value="any">Any</option>
+                            <option value="Unfurnished">Unfurnished</option>
+                            <option value="Partially">Partially Furnished</option>
+                            <option value="Fully">Fully Furnished</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="list-types">Balcony</label>
+                    <div class="select-wrap">
+                        <span class="icon icon-arrow_drop_down"></span>
+                        <select name="balcony" id="list-types" class="form-control d-block rounded-0">
+                            <option value="any" selected>Any</option>
+                            <option value="yes">With Balcony</option>
+                            <option value="no">Without Balcony</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="list-types">City</label>
+                    <div class="select-wrap">
+                        <span class="icon icon-arrow_drop_down"></span>
+                        <select name="city" id="list-types" class="form-control d-block rounded-0">
+                            <option value="any" selected>Any</option>
+                            <option value="johor">Johor</option>
+                            <option value="kuala lumpur">Kuala Lumpur</option>
+                            <option value="penang">Penang</option>
+                            <option value="selangor">Selangor</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="list-types">Floor</label>
+                    <div class="select-wrap">
+                        <span class="icon icon-arrow_drop_down"></span>
+                        <select name="floor" id="list-types" class="form-control d-block rounded-0">
+                            <option value="any" selected>any</option>
+                            <option value="ground">Ground</option>
+                            <option value="low">Low</option>
+                            <option value="mid">Mid</option>
+                            <option value="high">High</option>
+                            <option value="penthouse">Penthouse</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="offer-types">Bedroom</label>
+                    <div class="select-wrap">
+                        <span class="icon icon-arrow_drop_down"></span>
+                        <select name="bedroom" id="offer-types" class="form-control d-block rounded-0">
+                            <option value="any" selected>Any</option>
+                            <option value="studio">Studio</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5+</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="select-city">Bathroom</label>
+                    <div class="select-wrap">
+                        <span class="icon icon-arrow_drop_down"></span>
+                        <select name="bathroom" id="select-city" class="form-control d-block rounded-0">
+                            <option value="any" selected>any</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="select-city">Area</label>
+                    <div class="select-wrap">
+                        <span class="icon icon-arrow_drop_down"></span>
+                        <select name="area" id="select-city" class="form-control d-block rounded-0">
+                            <option value="any" selected>any</option>
+                            <option value="500">500 sqft</option>
+                            <option value="750">750 sqft</option>
+                            <option value="1000">1000 sqft</option>
+                            <option value="1500">1500 sqft</option>
+                            <option value="2000">2000 sqft</option>
+                            <option value="3000">3000 sqft</option>
+                            <option value="5000">5000 sqft</option>
+                            <option value="10000">10.000 sqft</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <input type="submit" class="btn btn-success text-white btn-block rounded-0" value="Search">
+                </div>
+            </div>
+        </form>
+    </div> 
+{% endblock %}
+
+{% block houseList %}
+
+    <br>
+    <div class="row">
+        {% if houses == null %}
+            <center><b>No result found</b></center>
+            {% else %}
+                {% for house in houses %}
+                <div class="col-md-12">
+                    <div class="property-entry horizontal d-lg-flex">
+
+                        <a href="#" class="property-thumbnail h-100">
+                            <div class="offer-type-wrap">
+                                <!-- <span class="offer-type bg-info">Lease</span> -->
+                            </div>
+                            <img src="{{ asset('template/images/')}}{{house.image}}" alt="Image" class="img-fluid">
+                        </a>
+
+                        <div class="p-4 property-body">
+                            <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
+                            <h2 class="property-title"><a href="#">{{ house.title }}</a></h2>
+                            <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> {{ house.address }}</span>
+                            <strong class="property-price text-primary mb-3 d-block text-success">{{house.price}} RM</strong>
+                            <p>{{ house.description}}</p>
+                            <ul class="property-specs-wrap mb-3 mb-lg-0">
+                                <li>
+                                    <span class="property-specs">Beds</span>
+                                    <span class="property-specs-number">{{house.nbBedroom}} <sup>+</sup></span>
+
+                                </li>
+                                <li>
+                                    <span class="property-specs">Baths</span>
+                                    <span class="property-specs-number">{{house.nbBathroom}}</span>
+
+                                </li>
+                                <li>
+                                    <span class="property-specs">SQ FT</span>
+                                    <span class="property-specs-number">{{house.sf}}</span>
+
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                <br>
+
+                <br>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+
+    <br>
+
+{% endblock %}
